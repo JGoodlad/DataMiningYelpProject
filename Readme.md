@@ -11,6 +11,7 @@
   - **learn_eta.py is produces the cross validation results and makes a prediction which can be used to submitted to Kaggle. This file generates the our selected Kaggle submission.**
   - **1_eta.csv & 2_eta.csv are the files needed by learn_eta.py for training and prediction, respectively.**
   - **out636800673410765696_eta_early.txt & out636800673410765696_eta_early.csv are the results of the 5 K-Fold validation run and the results submitted to Kaggle, respectively. These files can be reproduced by running the learn_eta.py with the required dependencies.**
+- /KaggleSubmissions/... Final Kaggle Submissions
 - /SQL/... A collection of the all the SQL queries we used
   - Files with name TrainAndPredict_*.sql produce two results, the first is used for training, the second to make predictions for kaggle submissions. The size at the end of the name determines how many features are included.
   - ExpectationTable.sql (ExtendedExpectationTable.sql) produces the (Extended) Expected Value Table for a given User Average and Business Average.
