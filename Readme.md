@@ -5,7 +5,7 @@
 **Instructions to reproduce our final results are included in the first bullet of the "Repository Structure" section.**
 
 
-### Repository Structure
+## Repository Structure
 - **/BestModelwDataAndResults/ a folder that contains all parts required to reproduce our results**
   - **The SQL query is included for reference. I would require spinning up a MS SQL Server instance.**
   - **learn_eta.py is produces the cross validation results and makes a prediction which can be used to submitted to Kaggle. This file generates the our selected Kaggle submission.**
