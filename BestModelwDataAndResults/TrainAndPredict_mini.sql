@@ -2,21 +2,21 @@
 --TRAIN
 SELECT
 	t.UserAvgRating,
-	x.*,
+	ISNULL(x.ReviewCategoryAverageStars, t.BusinessAvgRating),
 	t.stars as y
 FROM (SELECT
 		b.stars as BusinessAverageStars,
 		cast(ROUND(u.average_stars * 4, 0) / 4 as decimal(10, 2)) as NearestUserAverageStars,
 		AVG(r.stars + 0.0) as ReviewCategoryAverageStars
-	FROM my_review r
-		INNER JOIN my_user u
+	FROM reviews r
+		INNER JOIN Users u
 			ON u.user_id = r.user_id
-		INNER JOIN my_business b
+		INNER JOIN Business b
 			ON b.business_id = r.business_id
-		CROSS JOIN (SELECT COUNT(*) as TtlReviewCount FROM my_review) as x
+		CROSS JOIN (SELECT COUNT(*) as TtlReviewCount FROM Reviews) as x
 	where r.stars >= 1
 	GROUP BY b.stars, cast(ROUND(u.average_stars * 4, 0) / 4 as decimal(10, 2))) as x
-INNER JOIN
+RIGHT JOIN
 	(SELECT 
 		b.business_id,
 		u.user_id,
@@ -33,23 +33,23 @@ INNER JOIN
 SELECT
 	t.TestIndex,
 	t.UserAvgRating,
-	x.*,
+	ISNULL(x.ReviewCategoryAverageStars, t.BusinessAvgRating),
 	t.stars as y
 
 FROM (SELECT
 		b.stars as BusinessAverageStars,
 		cast(ROUND(u.average_stars * 4, 0) / 4 as decimal(10, 2)) as NearestUserAverageStars,
 		AVG(r.stars + 0.0) as ReviewCategoryAverageStars
-	FROM my_review r
-		INNER JOIN my_user u
+	FROM reviews r
+		INNER JOIN users u
 			ON u.user_id = r.user_id
-		INNER JOIN my_business b
+		INNER JOIN business b
 			ON b.business_id = r.business_id
-		CROSS JOIN (SELECT COUNT(*) as TtlReviewCount FROM my_review) as x
+		CROSS JOIN (SELECT COUNT(*) as TtlReviewCount FROM reviews) as x
 	where r.stars >= 1
 	GROUP BY b.stars, cast(ROUND(u.average_stars * 4, 0) / 4 as decimal(10, 2))) as x
 
-INNER JOIN
+RIGHT JOIN
 	(SELECT 
 		r.TestIndex,
 		b.business_id,
