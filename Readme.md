@@ -19,4 +19,4 @@
 - /VariousPredictionsCsv/ contains .CSV files that can be submitted directly to kaggle.
 - /VariousNeuralNetworkCongfigs/ contains various Keras NN models.
 - /VariousRecommenderSystems/ contains various Surprise RS models.
-
+- /VariousSVM/ contains various SVM models.
